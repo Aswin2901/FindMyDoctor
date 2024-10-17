@@ -6,49 +6,44 @@ import doctor1 from '../../Images/pixelcut-export.png';
 import doctor2 from '../../Images/doctor-herp.jpg';
 import doctorpatient from '../../Images/service doctor -1.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCalendarAlt, faUser } from '@fortawesome/free-solid-svg-icons'; // Import icons
+import { faSearch, faCalendarAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
-    doctor1, // you can replace this with more image URLs if you want to rotate multiple images
+    doctor1,
     doctor2
   ];
 
-  // Set up the background image change every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('change');
-      
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <div className="home-container">
-      {/* Navbar */}
-      <Navbar/>
+      <Navbar />
 
-      {/* Hero Section */}
       <div 
         className="hero-section"
-        style={{ backgroundImage: `url(${images[currentImage]})` }} // Dynamically set the background image
+        style={{ backgroundImage: `url(${images[currentImage]})` }} 
       >
         <div className="hero-content">
-          <h1>Find Your Personal <span>Doctor, Anytime!</span></h1>
+          <h1>Find Your Personal <span>Doctor</span> Anytime!</h1>
           <div className="action-buttons">
-            <div className="button">
+            <div className="button search-button">
               <FontAwesomeIcon icon={faSearch} className="icon" />
               <p>SEARCH</p>
             </div>
-            <div className="button">
+            <div className="button appointment-button">
               <FontAwesomeIcon icon={faCalendarAlt} className="icon" />
               <p>APPOINTMENT</p>
             </div>
-            <div className="button">
+            <div className="button profile-button">
               <FontAwesomeIcon icon={faUser} className="icon" />
               <p>PROFILES</p>
             </div>
@@ -56,10 +51,9 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Info Section */}
       <div className="info-section">
         <div className="info-text">
-          <h2>We're here to connect you with the right <span>Doctor</span> for your health needs.</h2>
+          <h2>We connect you with the best <span>Doctors</span> for your health needs.</h2>
           <button className="book-now-btn">Book Now</button>
         </div>
         <div className="info-image">
@@ -67,8 +61,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
