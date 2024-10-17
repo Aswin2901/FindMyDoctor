@@ -1,0 +1,120 @@
+/* Home.css */
+
+/* Container */
+.home-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    height: 80vh; /* Takes 80% of the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover; /* Make the background cover the entire section */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out; /* Smooth transition for image change */
+    position: relative; /* To manage absolute positioning of the content */
+  }
+  
+  .hero-content {
+    text-align: center;
+    color: white;
+    z-index: 1; /* Make sure content stays above the background */
+    position: relative;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Slight dark overlay for text readability */
+    z-index: 0; /* Ensure the overlay is behind the content */
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-content span {
+    color: #B71C1C; /* Red text for emphasis */
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button {
+    margin: 0 20px;
+    text-align: center;
+  }
+  
+  .icon {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #B71C1C; /* Red text color */
+  }
+  
+  /* Info Section */
+  .info-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    background-color: #E3F2FD; /* Light blue background */
+  }
+  
+  .info-text {
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .info-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .info-text span {
+    color: #B71C1C; /* Red text for emphasis */
+  }
+  
+  .book-now-btn {
+    background-color: #B71C1C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .book-now-btn:hover {
+    background-color: #9E1A1A;
+  }
+  
+  .info-image img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1A1A1A;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
