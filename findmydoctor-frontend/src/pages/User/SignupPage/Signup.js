@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Signup.css';
-import Navbar from '../../components/Navbar/Navbar.js';
-import Footer from '../../components/Footer/Footer.js';
+import Navbar from '../../../components/Navbar/Navbar.js';
+import Footer from '../../../components/Footer/Footer.js';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -129,7 +129,9 @@ const Signup = () => {
             <button type="submit" className="signup-button">SIGN UP</button>
           </form>
           <div className="signup-links">
-            <Link to='/login'>Already have an account?</Link>
+            <Link to='/login'>Already have an account?</Link><br/>
+            <br/>
+            <Link to='/login'>Sign up as a Doctor</Link>
           </div>
         </div>
       </div>

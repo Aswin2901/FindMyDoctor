@@ -5,11 +5,6 @@
   overflow-x: hidden;
 }
 
-/* Navbar */
-.navbar {
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
 
 /* Hero Section */
 .hero-section {
@@ -75,14 +70,14 @@
 }
 
 .button p {
-  font-size: 0.7rem; /* Smaller font size */
+  font-size: 0.7rem; 
   font-weight: bold;
-  margin-top: 5px; /* Smaller margin */
+  margin-top: 5px; 
   color: white;
 }
 
 .icon {
-  font-size: 1.8rem; /* Smaller icon */
+  font-size: 1.8rem; 
   color: white;
 }
 

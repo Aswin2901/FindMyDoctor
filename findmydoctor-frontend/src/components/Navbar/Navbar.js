@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import logo from '../../Images/icon.svg'
 
+
 const Navbar = () => {
     return (
         <nav className="navbar">

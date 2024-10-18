@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
-import doctor1 from '../../Images/pixelcut-export.png';
-import doctor2 from '../../Images/doctor-herp.jpg';
-import doctorpatient from '../../Images/service doctor -1.jpg';
+import Navbar from '../../../components/Navbar/Navbar';
+import Footer from '../../../components/Footer/Footer';
+import doctor1 from '../../../Images/pixelcut-export.png';
+import doctor2 from '../../../Images/doctor-herp.jpg';
+import doctor3 from '../../../Images/doc-3.jpeg';
+import doctorpatient from '../../../Images/service doctor -1.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCalendarAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +14,8 @@ const Home = () => {
 
   const images = [
     doctor1,
-    doctor2
+    doctor2,
+    doctor3
   ];
 
   useEffect(() => {
