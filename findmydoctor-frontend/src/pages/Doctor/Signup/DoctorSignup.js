@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Signup.css';
+import './DoctorSignup.css';
 import Navbar from '../../../components/Navbar/Navbar.js';
 import Footer from '../../../components/Footer/Footer.js';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const DoctorSignup = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    fullName: '',
+    full_name: '',
     email: '',
     phone: '',
     gender: '',
-    dateOfBirth: '',
+    date_of_birth: '',
     state: '',
     address: '',
     password: '',
-    confirmPassword: '',
+    confirm_password: '',
   });
+
+  const [errorMessage, setErrorMessage] = useState(''); // State to manage error messages
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,19 +28,27 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Password matching check
+    if (formData.password !== formData.confirm_password) {
+      setErrorMessage('Passwords do not match!');
+      return; // Do not submit the form if passwords don't match
+    }
+
     try {
-      const response = await axios.post('http://localhost:8000/accounts/register/', {
-        username: formData.email, // Use email as username
+      const response = await axios.post('http://localhost:8000/doctors/register/', {
+        full_name: formData.full_name,
+        email: formData.email,
         phone: formData.phone,
         gender: formData.gender,
-        date_of_birth: formData.dateOfBirth,
+        date_of_birth: formData.date_of_birth,
         state: formData.state,
         address: formData.address,
         password: formData.password,
+        confirm_password: formData.confirm_password,
       });
 
       console.log('Registration successful', response.data);
-      navigate('/login'); 
+      navigate('/doctorlogin'); // Navigate to profile verification after successful registration
     } catch (error) {
       console.error('Registration error:', error.response ? error.response.data : error.message);
     }
@@ -46,16 +56,16 @@ const Signup = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="signup-container">
         <div className="signup-form">
-          <h2>SIGN UP HERE</h2>
+          <h2>DOCTOR SIGN UP HERE</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              name="fullName"
+              name="full_name"
               placeholder="FULL NAME"
-              value={formData.fullName}
+              value={formData.full_name}
               onChange={handleChange}
               required
             />
@@ -87,9 +97,9 @@ const Signup = () => {
             </select>
             <input
               type="date"
-              name="dateOfBirth"
+              name="date_of_birth"
               placeholder="DATE OF BIRTH"
-              value={formData.dateOfBirth}
+              value={formData.date_of_birth}
               onChange={handleChange}
               required
             />
@@ -119,24 +129,28 @@ const Signup = () => {
             />
             <input
               type="password"
-              name="confirmPassword"
+              name="confirm_password"
               placeholder="CONFIRM PASSWORD"
-              value={formData.confirmPassword}
+              value={formData.confirm_password}
               onChange={handleChange}
               required
             />
+
+            {/* Display error message if passwords do not match */}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
             <button type="submit" className="signup-button">SIGN UP</button>
           </form>
           <div className="signup-links">
-            <Link to='/login'>Already have an account?</Link><br/>
-            <br/>
-            <Link to='/doctorsignup'>Sign up as a Doctor</Link>
+            <Link to='/login'>Already have an account?</Link><br />
+            <br />
+            <Link to='/'>Sign up as a user</Link>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
 
-export default Signup;
+export default DoctorSignup;

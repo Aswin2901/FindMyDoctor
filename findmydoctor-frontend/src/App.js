@@ -8,6 +8,9 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ProfileVerificationForm from './pages/Doctor/ProfileVarificatonForm/ProfileVarificationForm';
 import DocumentVerificationForm from './pages/Doctor/DocumentVarification.js/DocumentVarificationForm';
+import DoctorSignup from './pages/Doctor/Signup/DoctorSignup';
+import DoctorLogin from './pages/Doctor/LoginPage/DoctorLogin';
+import DoctorDashboard from './pages/Doctor/Dashboard/DoctorDashboard'
 
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
           <Route path="/" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/home" element={<PrivateRoute> <Home/> </PrivateRoute>} />
+          <Route path="/doctorsignup" element={<DoctorSignup/>} />
+          <Route path="/doctorlogin" element={<DoctorLogin/>} />
+          <Route path='/doctordashboard' element={<DoctorDashboard/>}/>
           <Route path="/profilevarification" element={<ProfileVerificationForm/>} />
           <Route path="/documentvarification" element={<DocumentVerificationForm/>} />
         </Routes>

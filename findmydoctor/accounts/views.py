@@ -17,7 +17,7 @@ class RegisterUser(APIView):
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    permission_classes = (permissions.AllowAny,)  # Allow any user to access this view
+    permission_classes = (permissions.AllowAny,)  
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
@@ -26,7 +26,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
             'refresh': response.data['refresh'],
             'user': {
                 'email': request.data['email'],
-                'phone': request.data.get('phone'),  # if phone is part of the user model
-                'gender': request.data.get('gender'),  # if gender is part of the user model
+                'phone': request.data.get('phone'), 
+                'gender': request.data.get('gender'), 
             }
         })
