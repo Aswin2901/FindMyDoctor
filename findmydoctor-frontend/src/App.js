@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Signup from './pages/User/SignupPage/Signup';
-import Login from './pages/LoginPage/Login';
+import Login from './pages/User/LoginPage/Login';
 import Home from './pages/User/HomePage/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import '@fortawesome/fontawesome-free/css/all.min.css';

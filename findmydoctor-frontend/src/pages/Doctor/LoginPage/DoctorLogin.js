@@ -12,6 +12,8 @@ const DoctorLogin = () => {
     password: '',
   });
 
+  const [errorMessage, setErrorMessage] = useState(''); // State for handling errors
+
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
@@ -21,22 +23,25 @@ const DoctorLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData.email , formData.password)
+      console.log(formData.email, formData.password);
       const response = await axios.post('http://localhost:8000/doctors/login/', {
-        email: formData.email, 
+        email: formData.email,
         password: formData.password,
       });
 
       console.log('Login successful', response.data);
-      // Optionally, store the token in localStorage or state management
-      localStorage.setItem('access_token', response.data.access); // Save access token
-      localStorage.setItem('refresh_token', response.data.refresh); // Save refresh token
 
-      // Navigate to the home page or dashboard after successful login
-      navigate('/doctordashboard'); // Change this to your actual dashboard or home route
+      // Store the token in localStorage
+      localStorage.setItem('access_token', response.data.access);
+      localStorage.setItem('refresh_token', response.data.refresh);
+
+      // Navigate to the doctor dashboard after successful login
+      navigate('/doctordashboard');
     } catch (error) {
       console.error('Login error:', error.response ? error.response.data : error.message);
-      // Optionally, display an error message to the user
+
+      // Set error message if login fails
+      setErrorMessage('Invalid email or password. Please try again.');
     }
   };
 
@@ -46,7 +51,7 @@ const DoctorLogin = () => {
 
       <div className="login-container">
         <div className="login-form">
-          <h2>LOGIN HERE</h2>
+          <h2>DOCTOR LOGIN</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -64,10 +69,16 @@ const DoctorLogin = () => {
               onChange={handleChange}
               required
             />
+
+            {/* Display error message for login failure */}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
             <button type="submit" className="login-button">LOGIN</button>
           </form>
+
           <div className="login-links">
-            <Link to='/'>Don't have an account?</Link>
+            <Link to='/doctorsignup'>Don't have an account? Sign up here</Link><br />
+            <Link to='/'>Go to user login</Link>
           </div>
         </div>
       </div>

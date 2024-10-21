@@ -20,7 +20,8 @@ const DoctorSignup = () => {
     confirm_password: '',
   });
 
-  const [errorMessage, setErrorMessage] = useState(''); // State to manage error messages
+  const [errorMessage, setErrorMessage] = useState(''); // Error message state
+  const [successMessage, setSuccessMessage] = useState(''); // Success message state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,29 +29,26 @@ const DoctorSignup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Password matching check
+
     if (formData.password !== formData.confirm_password) {
       setErrorMessage('Passwords do not match!');
-      return; // Do not submit the form if passwords don't match
+      setSuccessMessage(''); // Clear success message on error
+      return;
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/doctors/register/', {
-        full_name: formData.full_name,
-        email: formData.email,
-        phone: formData.phone,
-        gender: formData.gender,
-        date_of_birth: formData.date_of_birth,
-        state: formData.state,
-        address: formData.address,
-        password: formData.password,
-        confirm_password: formData.confirm_password,
-      });
+      const response = await axios.post('http://localhost:8000/doctors/register/', formData);
 
       console.log('Registration successful', response.data);
-      navigate('/doctorlogin'); // Navigate to profile verification after successful registration
+      setErrorMessage(''); // Clear error message on success
+      setSuccessMessage('Registration successful! Redirecting to login...');
+      setTimeout(() => {
+        navigate('/doctorlogin'); // Redirect after success
+      }, 3000);
     } catch (error) {
       console.error('Registration error:', error.response ? error.response.data : error.message);
+      setErrorMessage('Registration failed. Please try again.'); // Set error message
+      setSuccessMessage(''); // Clear success message on error
     }
   };
 
@@ -61,6 +59,7 @@ const DoctorSignup = () => {
         <div className="signup-form">
           <h2>DOCTOR SIGN UP HERE</h2>
           <form onSubmit={handleSubmit}>
+            <label>Full Name</label>
             <input
               type="text"
               name="full_name"
@@ -69,6 +68,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Email</label>
             <input
               type="email"
               name="email"
@@ -77,6 +77,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Phone</label>
             <input
               type="text"
               name="phone"
@@ -85,6 +86,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Gender</label>
             <select
               name="gender"
               value={formData.gender}
@@ -95,6 +97,7 @@ const DoctorSignup = () => {
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
+            <label>Date of Birth</label>
             <input
               type="date"
               name="date_of_birth"
@@ -103,6 +106,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>State</label>
             <input
               type="text"
               name="state"
@@ -111,6 +115,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Address</label>
             <input
               type="text"
               name="address"
@@ -119,6 +124,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Password</label>
             <input
               type="password"
               name="password"
@@ -127,6 +133,7 @@ const DoctorSignup = () => {
               onChange={handleChange}
               required
             />
+            <label>Confirm Password</label>
             <input
               type="password"
               name="confirm_password"
@@ -136,14 +143,14 @@ const DoctorSignup = () => {
               required
             />
 
-            {/* Display error message if passwords do not match */}
+            {/* Display success or error message */}
+            {successMessage && <p className="success-message">{successMessage}</p>}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <button type="submit" className="signup-button">SIGN UP</button>
           </form>
           <div className="signup-links">
-            <Link to='/login'>Already have an account?</Link><br />
-            <br />
+            <Link to='/doctorlogin'>Already have an account?</Link><br />
             <Link to='/'>Sign up as a user</Link>
           </div>
         </div>
