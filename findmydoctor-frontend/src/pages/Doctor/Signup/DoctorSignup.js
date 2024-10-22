@@ -32,7 +32,7 @@ const DoctorSignup = () => {
 
     if (formData.password !== formData.confirm_password) {
       setErrorMessage('Passwords do not match!');
-      setSuccessMessage(''); // Clear success message on error
+      setSuccessMessage(''); 
       return;
     }
 

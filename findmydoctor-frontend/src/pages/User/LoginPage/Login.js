@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/token/', {
-        username: formData.email, // Use email as username
+        email: formData.email, // Use email as username
         password: formData.password,
       });
 
