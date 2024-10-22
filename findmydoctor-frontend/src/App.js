@@ -11,6 +11,7 @@ import DocumentVerificationForm from './pages/Doctor/DocumentVarification.js/Doc
 import DoctorSignup from './pages/Doctor/Signup/DoctorSignup';
 import DoctorLogin from './pages/Doctor/LoginPage/DoctorLogin';
 import DoctorDashboard from './pages/Doctor/Dashboard/DoctorDashboard'
+import Dashboard from './pages/Admin/Dashboard/Dashboard'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/doctordashboard' element={<DoctorDashboard/>}/>
           <Route path="/profilevarification" element={<ProfileVerificationForm/>} />
           <Route path="/documentvarification" element={<DocumentVerificationForm/>} />
+          <Route path='/admin/dashboard' element={<Dashboard/>}/>
         </Routes>
 
       </Router>

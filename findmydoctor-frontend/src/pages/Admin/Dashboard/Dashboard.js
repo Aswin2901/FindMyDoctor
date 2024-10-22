@@ -1,14 +1,14 @@
 import React from 'react';
 import './Dashboard.css';
-import doctor1 from '../../Images/doctor1.jpg'; // Assuming image paths
-import doctor2 from '../../Images/doctor2.jpg'; // Assuming image paths
-import logo from '../../Images/logo.svg'; // Assuming image paths
+// import doctor1 from '../../Images/doctor1.jpg'; // Assuming image paths
+// import doctor2 from '../../Images/doctor2.jpg'; // Assuming image paths
+// import logo from '../../Images/logo.svg'; // Assuming image paths
 
 const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <header className="dashboard-header">
-                <img src={logo} alt="Find My Doctor Logo" className="dashboard-logo" />
+                {/* <img src={logo} alt="Find My Doctor Logo" className="dashboard-logo" /> */}
             </header>
 
             <div className="dashboard-main">
@@ -46,7 +46,7 @@ const Dashboard = () => {
                     <div className="new-doctors">
                         <h4>New Doctors</h4>
                         <div className="doctor-card">
-                            <img src={doctor1} alt="Dr. John Jacob" />
+                            {/* <img src={doctor1} alt="Dr. John Jacob" /> */}
                             <div className="doctor-info">
                                 <h5>DR JOHN JACOB</h5>
                                 <p>Cardiologists</p>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="doctor-card">
-                            <img src={doctor2} alt="Dr. Sam" />
+                            {/* <img src={doctor2} alt="Dr. Sam" /> */}
                             <div className="doctor-info">
                                 <h5>DR SAM</h5>
                                 <p>Gynecologist</p>
